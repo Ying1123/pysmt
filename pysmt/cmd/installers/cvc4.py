@@ -62,9 +62,6 @@ class CVC4Installer(SolverInstaller):
         if not PYTHON_LIBRARY:
             PYTHON_LIBRARY = sysconfig.get_config_var('LIBDIR')
         PYTHON_INCLUDE_DIR = sysconfig.get_python_inc()
-        SolverInstaller.run(['sed', '-i',
-                             's|cmake_opts=""|cmake_opts="-DPYTHON_LIBRARY=' + PYTHON_LIBRARY + ' -DPYTHON_INCLUDE_DIR=' + PYTHON_INCLUDE_DIR + '"|g',
-                             './configure.sh'], directory=self.extract_path)
 
         # Configure and build CVC4
         config_cmd = "./configure.sh --language-bindings=python \
